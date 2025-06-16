@@ -1,0 +1,28 @@
+[versions]
+androidGradlePlugin = "8.2.0" # Example
+kotlin = "1.9.22"             # Example
+
+coreKtx = "1.12.0"
+appcompat = "1.6.1"
+material = "1.11.0"
+activityKtx = "1.8.0"
+constraintlayout = "2.1.4" # Keep if using ConstraintLayout
+
+junit = "4.13.2"
+androidxJunit = "1.1.5"
+espressoCore = "3.5.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" } # Keep if used
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

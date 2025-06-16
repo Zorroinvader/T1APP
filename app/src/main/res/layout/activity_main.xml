@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scan for ESP32" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: Disconnected"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connect to ESP32"
+        android:enabled="false"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnDisconnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disconnect"
+        android:enabled="false"
+        android:layout_marginTop="8dp"/>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:columnCount="3"
+        android:layout_marginTop="24dp">
+
+        <View /> <!-- Empty cell -->
+        <Button
+            android:id="@+id/btnForward"
+            android:text="Forward" />
+        <View /> <!-- Empty cell -->
+
+        <Button
+            android:id="@+id/btnLeft"
+            android:text="Left" />
+        <Button
+            android:id="@+id/btnStop"
+            android:text="Stop" />
+        <Button
+            android:id="@+id/btnRight"
+            android:text="Right" />
+
+        <View /> <!-- Empty cell -->
+        <Button
+            android:id="@+id/btnBackward"
+            android:text="Backward" />
+        <View /> <!-- Empty cell -->
+    </GridLayout>
+
+</LinearLayout>
