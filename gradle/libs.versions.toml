@@ -1,5 +1,7 @@
 [versions]
-androidGradlePlugin = "8.2.0" # Example
+activityCompose = "1.10.1"
+androidGradlePlugin = "8.10.1" # Example
+composeBom = "2025.06.00"
 kotlin = "1.9.22"             # Example
 
 coreKtx = "1.12.0"
@@ -11,10 +13,19 @@ constraintlayout = "2.1.4" # Keep if using ConstraintLayout
 junit = "4.13.2"
 androidxJunit = "1.1.5"
 espressoCore = "3.5.1"
+foundationLayoutAndroid = "1.8.2"
+material3Android = "1.3.2"
+constraintlayoutVersion = "2.2.1"
 
 [libraries]
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" } # Keep if used
@@ -22,6 +33,9 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayoutVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

@@ -4,8 +4,9 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bus" // Sets the namespace for the R class generation
-    compileSdk = 34 // Or your desired compile SDK, 34 is the latest stable
+    namespace = "com.example.bus"
+    compileSdk = 35// Sets the namespace for the R class generation
+    // Or your desired compile SDK, 34 is the latest stable
 
     defaultConfig {
         applicationId = "com.example.bus" // Unique ID for your application
@@ -43,6 +44,14 @@ android {
 }
 
 dependencies {
+
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation(libs.androidx.compose.bom) // Check for latest BOM
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity.compose) //
     // Core AndroidX libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat) // For AppCompatActivity
@@ -53,7 +62,10 @@ dependencies {
 
     // Lifecycle components (ViewModel, LiveData) - good for managing UI-related data
 
-    implementation(libs.androidx.activity.ktx) // For by viewModels() and other activity extensions
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.material3.android)
+    implementation(libs.constraintlayout) // For by viewModels() and other activity extensions
 
     // Testing libraries
     testImplementation(libs.junit)
