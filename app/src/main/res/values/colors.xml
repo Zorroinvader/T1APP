@@ -7,4 +7,25 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Custom colors for buttons -->
+    <color name="button_color_primary">#FF6200EE</color> <!-- Example: A vibrant purple -->
+    <color name="button_text_color_primary">#FFFFFFFF</color>
+
+    <color name="button_color_movement">#FF03A9F4</color> <!-- Example: A light blue for movement -->
+    <color name="button_text_color_movement">#FFFFFFFF</color>
+
+    <color name="button_color_stop">#FFD32F2F</color> <!-- Example: Red for Stop -->
+    <color name="button_text_color_stop">#FFFFFFFF</color>
+
+    <color name="button_color_action_on">#FF4CAF50</color> <!-- Example: Green for "ON" states -->
+    <color name="button_text_color_action_on">#FFFFFFFF</color>
+
+    <color name="button_color_action_off">#FFFFA726</color> <!-- Example: Orange for "OFF" states or secondary actions -->
+    <color name="button_text_color_action_off">#FF000000</color>
+
+    <color name="button_color_flash">#FFFFEB3B</color> <!-- Example: Yellow for Flash -->
+    <color name="button_text_color_flash">#FF000000</color>
+
+    <color name="section_title_color">#FF37474F</color> <!-- Darker grey for section titles -->
 </resources>

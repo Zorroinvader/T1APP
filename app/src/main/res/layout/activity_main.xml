@@ -1,221 +1,432 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <!-- Existing Connection Buttons -->
-    <Button
-        android:id="@+id/btnScan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Prepare by MAC / Scan" />
-
+    <!-- Top section: Status and Connection Buttons -->
     <TextView
         android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
         android:text="Status: Disconnected"
-        android:layout_gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:layout_marginEnd="4dp"
+        android:text="Prepare/Scan"
+        android:backgroundTint="@color/button_color_primary"
+        android:textColor="@color/button_text_color_primary"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_conn_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
 
     <Button
         android:id="@+id/btnConnect"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Connect to ESP32"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:enabled="false"
-        android:layout_marginTop="8dp"/>
+        android:text="Connect"
+        android:backgroundTint="@color/button_color_action_on"
+        android:textColor="@color/button_text_color_action_on"
+        app:layout_constraintEnd_toStartOf="@id/guideline_conn_2"
+        app:layout_constraintStart_toEndOf="@id/guideline_conn_1"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
 
     <Button
         android:id="@+id/btnDisconnect"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Disconnect"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:enabled="false"
-        android:layout_marginTop="8dp"/>
+        android:text="Disconnect"
+        android:backgroundTint="@color/button_color_action_off"
+        android:textColor="@color/button_text_color_action_off"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_conn_2"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
 
-    <!-- Existing Movement Buttons -->
-    <GridLayout
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_conn_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:columnCount="3"
-        android:rowCount="3"
-        android:layout_marginTop="16dp">
-        <!-- ... your F, L, S, R, B buttons ... -->
-        <!-- Row 0 -->
-        <Space
-            android:layout_row="0" android:layout_column="0"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
-        <Button
-            android:id="@+id/btnForward"
-            android:layout_row="0" android:layout_column="1"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Forward"
-            android:enabled="false"
-            android:layout_gravity="center_horizontal"/>
-        <Space
-            android:layout_row="0" android:layout_column="2"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
 
-        <!-- Row 1 -->
-        <Button
-            android:id="@+id/btnLeft"
-            android:layout_row="1" android:layout_column="0"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="Left"
-            android:enabled="false"
-            android:layout_gravity="fill_horizontal"/>
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_row="1" android:layout_column="1"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Stop"
-            android:enabled="false"
-            android:layout_gravity="center_horizontal"/>
-        <Button
-            android:id="@+id/btnRight"
-            android:layout_row="1" android:layout_column="2"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="Right"
-            android:enabled="false"
-            android:layout_gravity="fill_horizontal"/>
-
-        <!-- Row 2 -->
-        <Button
-            android:id="@+id/btnCenterSteer"
-            android:layout_row="2" android:layout_column="0"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="Center"
-            android:enabled="false"
-            android:layout_gravity="fill_horizontal"/>
-        <Button
-            android:id="@+id/btnBackward"
-            android:layout_row="2" android:layout_column="1"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Backward"
-            android:enabled="false"
-            android:layout_gravity="center_horizontal"/>
-        <Space
-            android:layout_row="2" android:layout_column="2"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_columnWeight="1" android:layout_gravity="fill_horizontal" />
-    </GridLayout>
-
-    <!-- Blinker Buttons (modified for ON/OFF) -->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_conn_2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+
+    <!-- Scrollable area -->
+    <ScrollView
+        android:id="@+id/controlsScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:gravity="center">
+        android:paddingBottom="16dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnScan">
 
-        <Button
-            android:id="@+id/btnBlinkerLeftOn"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Blink L ON"
-            android:enabled="false"
-            android:layout_marginEnd="4dp"/>
-        <Button
-            android:id="@+id/btnBlinkerLeftOff"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Blink L OFF"
-            android:enabled="false"
-            android:layout_marginEnd="8dp"/>
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
-        <Button
-            android:id="@+id/btnBlinkerRightOn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Blink R ON"
-            android:enabled="false"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="4dp"/>
-        <Button
-            android:id="@+id/btnBlinkerRightOff"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Blink R OFF"
-            android:enabled="false"/>
-    </LinearLayout>
+            <!-- Movement Controls Section -->
+            <TextView
+                android:id="@+id/tvMovementLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:text="Movement Controls"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/section_title_color"
+                android:textStyle="bold"/>
 
-    <!-- Headlights, Backlights, Lichthupe -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
-        <Button
-            android:id="@+id/btnHeadlightsOn"
-            android:layout_width="0dp" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="Head ON" android:enabled="false"
-            android:layout_marginEnd="4dp"/>
-        <Button
-            android:id="@+id/btnHeadlightsOff"
-            android:layout_width="0dp" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="Head OFF" android:enabled="false"
-            android:layout_marginEnd="4dp"/>
-        <Button
-            android:id="@+id/btnLichthupe"
-            android:layout_width="0dp" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="Flash" android:enabled="false"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
-        <Button
-            android:id="@+id/btnBacklightsOn"
-            android:layout_width="0dp" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="Back ON" android:enabled="false"
-            android:layout_marginEnd="4dp"/>
-        <Button
-            android:id="@+id/btnBacklightsOff"
-            android:layout_width="0dp" android:layout_weight="1"
-            android:layout_height="wrap_content" android:text="Back OFF" android:enabled="false"/>
-    </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:padding="8dp"> <!-- Optional: background for section -->
 
-    <!-- Auto-Stop Override -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Auto-Stop Override: "/>
-        <Button
-            android:id="@+id/btnAutoStopEnable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sensor ON"
-            android:enabled="false"/>
-        <Button
-            android:id="@+id/btnAutoStopDisable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="App Force Drive"
-            android:enabled="false"
-            android:layout_marginStart="8dp"/>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/btnForward"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:minWidth="64dp"
+                    android:minHeight="64dp"
+                    android:text="▲"
+                    android:textSize="24sp"
+                    android:backgroundTint="@color/button_color_movement"
+                    android:textColor="@color/button_text_color_movement"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+                <Button
+                    android:id="@+id/btnLeft"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:enabled="false"
+                    android:minWidth="64dp"
+                    android:minHeight="64dp"
+                    android:text="◄"
+                    android:textSize="24sp"
+                    android:backgroundTint="@color/button_color_movement"
+                    android:textColor="@color/button_text_color_movement"
+                    app:layout_constraintEnd_toStartOf="@id/btnStop"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnForward" />
+
+                <Button
+                    android:id="@+id/btnStop"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:enabled="false"
+                    android:minWidth="72dp"
+                    android:minHeight="64dp"
+                    android:text="Stop"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/button_color_stop"
+                    android:textColor="@color/button_text_color_stop"
+                    app:layout_constraintBottom_toBottomOf="@id/btnLeft"
+                    app:layout_constraintEnd_toStartOf="@id/btnRight"
+                    app:layout_constraintStart_toEndOf="@id/btnLeft"
+                    app:layout_constraintTop_toTopOf="@id/btnLeft" />
+
+                <Button
+                    android:id="@+id/btnRight"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:minWidth="64dp"
+                    android:minHeight="64dp"
+                    android:text="►"
+                    android:textSize="24sp"
+                    android:backgroundTint="@color/button_color_movement"
+                    android:textColor="@color/button_text_color_movement"
+                    app:layout_constraintBottom_toBottomOf="@id/btnLeft"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnStop"
+                    app:layout_constraintTop_toTopOf="@id/btnLeft" />
+
+                <Button
+                    android:id="@+id/btnBackward"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:enabled="false"
+                    android:minWidth="64dp"
+                    android:minHeight="64dp"
+                    android:text="▼"
+                    android:textSize="24sp"
+                    android:backgroundTint="@color/button_color_movement"
+                    android:textColor="@color/button_text_color_movement"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnLeft" />
+
+                <Button
+                    android:id="@+id/btnCenterSteer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:enabled="false"
+                    android:text="Center Steer"
+                    android:backgroundTint="@color/button_color_action_off"
+                    android:textColor="@color/button_text_color_action_off"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnBackward" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Blinker Controls Section -->
+            <TextView
+                android:id="@+id/tvBlinkerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Blinkers"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/section_title_color"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:padding="8dp"> <!-- Optional -->
+
+                <Button
+                    android:id="@+id/btnBlinkerLeftOn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="L ON"
+                    android:backgroundTint="@color/button_color_action_on"
+                    android:textColor="@color/button_text_color_action_on"/>
+
+                <Button
+                    android:id="@+id/btnBlinkerLeftOff"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="L OFF"
+                    android:backgroundTint="@color/button_color_action_off"
+                    android:textColor="@color/button_text_color_action_off"/>
+
+                <Button
+                    android:id="@+id/btnBlinkerRightOn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="R ON"
+                    android:backgroundTint="@color/button_color_action_on"
+                    android:textColor="@color/button_text_color_action_on"/>
+
+                <Button
+                    android:id="@+id/btnBlinkerRightOff"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="R OFF"
+                    android:backgroundTint="@color/button_color_action_off"
+                    android:textColor="@color/button_text_color_action_off"/>
+            </LinearLayout>
+
+            <!-- Main Lights Section -->
+            <TextView
+                android:id="@+id/tvMainLightsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Main Lights"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/section_title_color"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="24dp"
+                android:padding="8dp"> <!-- Optional -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btnHeadlightsOn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Head ON"
+                        android:backgroundTint="@color/button_color_action_on"
+                        android:textColor="@color/button_text_color_action_on"/>
+
+                    <Button
+                        android:id="@+id/btnHeadlightsOff"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Head OFF"
+                        android:backgroundTint="@color/button_color_action_off"
+                        android:textColor="@color/button_text_color_action_off"/>
+
+                    <Button
+                        android:id="@+id/btnLichthupe"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Flash"
+                        android:backgroundTint="@color/button_color_flash"
+                        android:textColor="@color/button_text_color_flash"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnBacklightsOn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Back ON"
+                        android:backgroundTint="@color/button_color_action_on"
+                        android:textColor="@color/button_text_color_action_on"/>
+
+                    <Button
+                        android:id="@+id/btnBacklightsOff"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Back OFF"
+                        android:backgroundTint="@color/button_color_action_off"
+                        android:textColor="@color/button_text_color_action_off"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Auto-Stop Override Section -->
+            <TextView
+                android:id="@+id/tvAutoStopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Auto-Stop Override"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/section_title_color"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp"> <!-- Optional -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Override: "
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <Button
+                    android:id="@+id/btnAutoStopEnable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="Sensor ON"
+                    android:backgroundTint="@color/button_color_action_on"
+                    android:textColor="@color/button_text_color_action_on"/>
+
+                <Button
+                    android:id="@+id/btnAutoStopDisable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="App Force Drive"
+                    android:backgroundTint="@color/button_color_stop"
+                    android:textColor="@color/button_text_color_stop"/>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
